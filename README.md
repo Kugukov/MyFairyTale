@@ -1,22 +1,24 @@
-# 📱 "Моя сказка" — Мобильное приложение для родителей, позволяющее записывать сказки
+# 📱 "My Fairy Tale" — A Mobile Application for Parents to Record Fairy Tales
 
-Добро пожаловать! Это мой **pet-проект** - Android-приложение для родителей и детей, позволяющее **записывать и прослушивать сказки - аудио и текстовые**, при этом встроенный **ИИ анализирует содержание и определяет его безопасность для детей**.
-Изначально идея проекта была частью моей диссертации, но большая часть функционала к самой диссертации отношения не имеет и была реализована для моего интереса.  
-Записанная сказка отправляется на сервер, где проверяется безопасность и, если сказка безопасна, то сохраняется в БД.
-[Серверная часть](https://github.com/Kugukov/DissertationBackend)
+Welcome! This is my pet project — an Android application for parents and children that allows users to record and listen to fairy tales, both audio and text-based, while an integrated AI analyzes the content and determines whether it is safe for children.
+
+The original idea for this project was part of my dissertation, although most of the functionality is unrelated to the dissertation itself and was implemented out of personal interest.
+
+A recorded fairy tale is sent to the server, where its safety is checked. If the story is considered safe, it is stored in the database.
+[Backend Repository](https://github.com/Kugukov/DissertationBackend)
   
-## 🧠 Основная идея
+## 🧠 Main Idea
 
-Проект сочетает в себе:
-- Запись и воспроизведение сказок
-- Синхронизацию с сервером
-- Использование ИИ для анализа текста и аудио на наличие опасного контента (нецензурные выражения, жестокость и т.п.)
-- Разделение прав: **родитель** (с паролем) и **ребёнок** (без пароля)
-- Индивидуальная база сказок на каждом устройстве  
+The project combines:
+- Recording and playback of fairy tales
+- Synchronization with a server
+- AI-based analysis of text and audio for potentially harmful content (profanity, violence, etc.)
+- Role separation: parent (password protected) and child (no password)
+- An individual fairy tale database for each device  
   
 
 
-## 🛠 Технологии
+## 🛠 Technologies
 
 #### Android
 * Kotlin / Jetpack Compose (Compose, ViewModel, Navigation)
@@ -30,7 +32,7 @@
 * SQLite 
    
 
-## 📲 Скриншоты (демо)
+## 📲 Screenshots (Demo)
 
 <img src="screenshots/HomeScreen.jpg" height="400"/>
 <img src="screenshots/TalesLists.jpg" height="400"/>
@@ -38,29 +40,24 @@
 <img src="screenshots/Alerts.jpg" height="400"/>
 
 
-## 🔧 Основной функционал
+## 🔧 Main Features
 
-* 🎙 Запись сказок в формате `.wav`
-* 📤 Отправка аудио на сервер для анализа
-* 🧠 ИИ определяет опасные фрагменты и предупреждает пользователя
-* 🗂 Списки сказок для родителя и ребёнка
-* 🔒 Ограничения доступа: пароль только у родителя
-* 🔄 Обновление/удаление записей  
-
-
-## ⬇️ Загрузка
-[Список релизов](https://github.com/Kugukov/DissertationProject/releases/)  
+* 🎙 Record fairy tales in `.wav` format
+* 📤 Upload audio recordings to the server for analysis
+* 🧠 AI detects potentially harmful content and warns the user
+* 🗂 Separate fairy tale lists for parents and children
+* 🔒 Access restrictions: only the parent account is password-protected
+* 🔄 Update and delete recordings  
 
 
-## Минусы
-- На данный момент приложение не работает без сервера
-- Сервер реализован только локально
-- БД реализована на сервере, но через SQLite, что крайне непроизводительно
-- Нет возможности восстановить пароль   
+## Current Limitations
+- The application currently does not work without the server
+- The server is implemented only as a local deployment
+- The database uses SQLite on the server side, which is not suitable for high-performance production use
+- There is no password recovery functionality   
   
 <!-- 
-## 📁 Структура проекта
-
+## 📁 Project structure
 ```
 📦 app/
  ┣ 📂 ui/
@@ -76,32 +73,32 @@
 ---
 -->
 
-## 🧪 Пример использования ИИ
+## 🧪 Example of AI Usage
 
-1. Родитель записывает сказку
-2. Сказка отправляется на сервер (в `.wav`)
-3. Сервер расшифровывает и анализирует аудио
-4. Если найдены опасные слова:
-   * Появляется предупреждение
-   * Сказка удаляется  
+1. A parent records a fairy tale
+2. The fairy tale is sent to the server as a `.wav` file
+3. The server transcribes and analyzes the audio
+4. If harmful words or content are detected:
+   * A warning message is displayed
+   * The fairy tale is deleted  
   
 
-## 🔐 Безопасность
+## 🔐 Security
 
-* Доступ к родительским функциям защищён паролем (SharedPreferences)
-* У каждого устройства своя база сказок
-* Сказки не публикуются в общий доступ  
-
-
-## 🧩 Возможные улучшения
-
-* Использовать ИИ, наученный определять небезопасный детский контент (в данный момент на русском нет такой модели ИИ)
-* Перевести всё приложение на английский для использования подходящей модели ИИ 
-* Восстановление пароля
-* Облачное хранилище для хранения сказок / переработать БД и не хранить на сервере "сказки", только для проверки как кэш (REDIS)
-* MVVM и Clean Architecture  
+* Access to parent-only features is protected by a password (SharedPreferences)
+* Each device has its own fairy tale database
+* Fairy tales are not publicly available  
 
 
-## 📄 Лицензия
+## 🧩 Possible Improvements
 
-Этот проект лицензирован под лицензией MIT. См. файл [LICENSE](LICENSE) для подробностей.
+* Use an AI model specifically trained to detect unsafe children's content (currently such models are not available for Russian)
+* ПTranslate the entire application into English to use more suitable AI models 
+* Add password recovery functionality
+* Implement cloud storage for fairy tales / redesign the database architecture and use the server only for content verification and caching (e.g., Redis)
+* Apply MVVM and Clean Architecture principles more consistently  
+
+
+## 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
